@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini App UC Buyurtma</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background-color: #0088cc;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>UC Buyurtma</h2>
+  <input type="text" id="pubg_id" placeholder="PUBG ID">
+  <input type="text" id="tg_user" placeholder="Telegram @username">
+  <button onclick="sendData()">Yuborish</button>
+
+  <script>
+    Telegram.WebApp.init();
+    function sendData() {
+      var pubg_id = document.getElementById('pubg_id').value;
+      var tg_user = document.getElementById('tg_user').value;
+      var data = {
+        "pubg_id": pubg_id,
+        "telegram_user": tg_user
+      };
+      Telegram.WebApp.sendData(JSON.stringify(data));
+    }
+  </script>
+</body>
+  </html>
